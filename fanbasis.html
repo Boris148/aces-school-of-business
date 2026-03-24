@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACES School of Business — Build Your Business From Scratch</title>
+<meta name="description" content="Learn how to start, grow, and scale your own online business using real systems built on human behavior.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C8A24E;
+    --gold-light: #DDB95D;
+    --gold-dark: #A8862E;
+    --bg: #0B0B0F;
+    --bg-card: #111117;
+    --bg-subtle: #16161E;
+    --text: #E8E6E1;
+    --text-muted: #8A8A8F;
+    --text-dim: #5A5A60;
+    --border: rgba(200,162,78,0.12);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Utility */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .gold { color: var(--gold); }
+
+  /* ─── Top Bar ─── */
+  .topbar {
+    background: var(--gold);
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0B0B0F;
+    letter-spacing: 0.3px;
+  }
+
+  /* ─── Nav ─── */
+  .nav {
+    padding: 20px 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav img {
+    height: 32px;
+  }
+
+  .nav .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  .nav .logo-sub {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(200,162,78,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(200,162,78,0.3);
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 .highlight {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #0B0B0F;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(200,162,78,0.25);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(200,162,78,0.35);
+  }
+
+  .cta-sub {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 14px;
+  }
+
+  /* ─── Divider ─── */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto;
+  }
+
+  /* ─── Problem Section ─── */
+  .section {
+    padding: 72px 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .section p {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 620px;
+  }
+
+  .section.center { text-align: center; }
+  .section.center p { margin: 0 auto; }
+
+  /* Pain Points */
+  .pain-list {
+    list-style: none;
+    margin: 28px 0;
+    max-width: 560px;
+  }
+
+  .section.center .pain-list { margin: 28px auto; }
+
+  .pain-list li {
+    font-size: 16px;
+    color: var(--text-muted);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pain-list li::before {
+    content: '→';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ─── Transformation ─── */
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  @media (max-width: 600px) { .transform-grid { grid-template-columns: 1fr; } }
+
+  .transform-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .transform-card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .transform-card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .transform-card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin: 0;
+  }
+
+  /* ─── What You Get ─── */
+  .curriculum {
+    margin: 32px 0;
+  }
+
+  .curriculum-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .curriculum-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--gold);
+    min-width: 28px;
+    text-align: right;
+  }
+
+  .curriculum-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .curriculum-item p {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  /* ─── Psychology Block ─── */
+  .psych-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    margin: 32px 0;
+    text-align: center;
+  }
+
+  .psych-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .psych-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+    text-align: left;
+  }
+
+  @media (max-width: 600px) { .psych-grid { grid-template-columns: 1fr; } }
+
+  .psych-item {
+    padding: 16px;
+    background: rgba(200,162,78,0.04);
+    border-radius: 8px;
+    border: 1px solid rgba(200,162,78,0.08);
+  }
+
+  .psych-item p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .psych-item strong { color: var(--gold-light); }
+
+  /* ─── Quote Block ─── */
+  .quote-block {
+    text-align: center;
+    padding: 64px 24px;
+  }
+
+  .quote-block blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .quote-block .attr {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 16px;
+    font-style: normal;
+  }
+
+  /* ─── Resell ─── */
+  .resell-banner {
+    background: linear-gradient(135deg, rgba(200,162,78,0.08), rgba(200,162,78,0.02));
+    border: 1px solid rgba(200,162,78,0.15);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    margin: 32px 0;
+  }
+
+  .resell-banner .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .resell-banner .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .resell-banner p {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 16px auto 0;
+  }
+
+  /* ─── Pricing ─── */
+  .pricing {
+    text-align: center;
+    padding: 72px 24px;
+  }
+
+  .price-card {
+    background: var(--bg-card);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 440px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  }
+
+  .price-card .price-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .price-card .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .price-card .price-note {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-top: 8px;
+    margin-bottom: 28px;
+  }
+
+  .price-includes {
+    list-style: none;
+    text-align: left;
+    margin: 24px 0;
+  }
+
+  .price-includes li {
+    font-size: 14px;
+    color: var(--text-muted);
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .price-includes li .check {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-list {
+    margin: 32px 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 20px 0;
+  }
+
+  .faq-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .faq-item p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    text-align: center;
+    padding: 48px 24px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+
+  .footer a {
+    color: var(--text-dim);
+    text-decoration: none;
+  }
+
+  /* ─── Sticky CTA (mobile) ─── */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(11,11,15,0.95);
+    backdrop-filter: blur(12px);
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    z-index: 100;
+    text-align: center;
+  }
+
+  .sticky-cta .cta-btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .sticky-cta { display: block; }
+    .footer { padding-bottom: 80px; }
+  }
+
+  /* ─── Noise Callouts ─── */
+  .noise-list {
+    list-style: none;
+    margin: 24px 0;
+    max-width: 480px;
+  }
+
+  .section.center .noise-list { margin: 24px auto; }
+
+  .noise-list li {
+    font-size: 16px;
+    color: var(--text-dim);
+    padding: 6px 0;
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,80,80,0.4);
+  }
+
+  .anti-noise {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 20px auto;
+    line-height: 1.9;
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">ACES SCHOOL OF BUSINESS — NOW ENROLLING</div>
+
+<!-- Nav -->
+<div class="nav">
+  <div class="logo-text">AOS FUNDS</div>
+  <div class="logo-sub">Aces School of Business</div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">Education × Execution</div>
+    <h1>Build Your Business<br>From <span class="highlight">Scratch</span></h1>
+    <p>Learn how to start, grow, and scale your own online business using real systems built on human behavior — not trends, not opinions, and not recycled advice.</p>
+    <a href="#enroll" class="cta-btn">Learn More →</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Problem -->
+<div class="section center">
+  <div class="container">
+    <div class="section-label">The Real Problem</div>
+    <h2>If You've Been Trying To Figure This Out On Your Own…</h2>
+    <p>It's not because you're not consistent enough. It's not because you need to "post more."</p>
+    <p style="margin-top: 16px;">It's because <strong style="color:#fff;">no one showed you how people actually make decisions online.</strong></p>
+    <p style="margin-top: 20px; color: var(--text);">ACES School of Business is built around one thing:</p>
+    <p style="margin-top: 8px; color: var(--gold); font-weight: 600; font-size: 17px;">Understanding how attention turns into trust…<br>and how trust turns into sales.</p>
+  </div>
+</div>
+
+<!-- Does This Sound Like You -->
+<div class="section center" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-label">Sound Familiar?</div>
+    <h2>Does This Sound Like You?</h2>
+    <ul class="pain-list">
+      <li>You're posting, but it's not converting</li>
+      <li>You feel like you're missing something everyone else understands</li>
+      <li>You don't want to look lost online, but you don't know what to fix</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Transformation -->
+<div class="section center">
+  <div class="container">
+    <div class="section-label">The Shift</div>
+    <h2>What Happens When It Finally Clicks</h2>
+
+    <div class="transform-grid">
+      <div class="transform-card">
+        <div class="icon">🎯</div>
+        <h4>Clarity Over Guessing</h4>
+        <p>You know exactly what to say — and why it works.</p>
+      </div>
+      <div class="transform-card">
+        <div class="icon">🧲</div>
+        <h4>Inbound, Not Outbound</h4>
+        <p>People start reaching out instead of you chasing.</p>
+      </div>
+      <div class="transform-card">
+        <div class="icon">📡</div>
+        <h4>Content That Pulls</h4>
+        <p>Your content starts attracting the right audience naturally.</p>
+      </div>
+      <div class="transform-card">
+        <div class="icon">⚡</div>
+        <h4>Operate With Precision</h4>
+        <p>Stop guessing and start operating with clarity and confidence.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Curriculum -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">What's Inside</div>
+    <h2>Everything You Get Inside ACES</h2>
+    <p>A complete, step-by-step system to build your business from zero.</p>
+
+    <div class="curriculum">
+      <div class="curriculum-item">
+        <div class="curriculum-num">01</div>
+        <div>
+          <h4>Positioning & Trust Building</h4>
+          <p>How to position yourself so people trust you — without overexplaining.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">02</div>
+        <div>
+          <h4>Done-For-You Content</h4>
+          <p>Never get stuck wondering what to post. Ready-made content you can use immediately.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">03</div>
+        <div>
+          <h4>ChatGPT Content That Sounds Like You</h4>
+          <p>Use AI to create content that sounds human — not robotic.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">04</div>
+        <div>
+          <h4>Psychology-Based Content Strategy</h4>
+          <p>Built on how people actually consume and make decisions.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">05</div>
+        <div>
+          <h4>Instagram & Facebook Lead Systems</h4>
+          <p>Consistent inbound leads — designed for the platforms you're already on.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">06</div>
+        <div>
+          <h4>DM & Phone Frameworks</h4>
+          <p>Conversations that feel natural — not scripted or salesy.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">07</div>
+        <div>
+          <h4>Video Editing with CapCut</h4>
+          <p>Create clean, high-converting videos that stop the scroll.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">08</div>
+        <div>
+          <h4>Canva Brand Design</h4>
+          <p>Make your brand actually look established and professional.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">09</div>
+        <div>
+          <h4>Build Your Website with AI</h4>
+          <p>Launch a professional site without hiring a developer.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">10</div>
+        <div>
+          <h4>Meta Ads Training</h4>
+          <p>Scale without depending on anyone. Run your own ads with confidence.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">11</div>
+        <div>
+          <h4>ManyChat Automation</h4>
+          <p>Automate your DMs and lead capture so you're working smarter.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">12</div>
+        <div>
+          <h4>LLC Setup & Business Structure</h4>
+          <p>Get your business set up the right way from day one.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <div class="curriculum-num">13</div>
+        <div>
+          <h4>Hiring & Delegating to VAs</h4>
+          <p>Scale without burnout — learn when and how to delegate.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Psychology Block -->
+<div class="section center">
+  <div class="container">
+    <div class="psych-block">
+      <div class="section-label">The Difference</div>
+      <h3>This Is Where Most People Get It Wrong</h3>
+      <p style="color: var(--text-muted); font-size: 15px;">They follow advice that sounds good… but doesn't actually change behavior.</p>
+
+      <ul class="noise-list" style="text-align: center; margin: 24px auto;">
+        <li>"Stay consistent."</li>
+        <li>"Post more."</li>
+        <li>"Be patient."</li>
+      </ul>
+
+      <p style="color: var(--text-muted); font-size: 15px; margin-top: 20px;">That's not strategy — that's noise.</p>
+
+      <div class="psych-grid">
+        <div class="psych-item">
+          <p><strong>What makes someone stop scrolling</strong> — and actually pay attention</p>
+        </div>
+        <div class="psych-item">
+          <p><strong>What builds trust</strong> — without you forcing it or overexplaining</p>
+        </div>
+        <div class="psych-item">
+          <p><strong>What actually moves someone to buy</strong> — not just engage</p>
+        </div>
+        <div class="psych-item">
+          <p><strong>Built on human psychology</strong> — not surface-level tactics</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Positioning Quote -->
+<div class="quote-block">
+  <div class="container">
+    <blockquote>"You don't need more content.<br>You need <span class="gold">better positioning.</span>"</blockquote>
+    <p class="attr">When you understand how people think, your content stops feeling random — and starts working.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Resell -->
+<div class="section center">
+  <div class="container">
+    <div class="section-label">Bonus Opportunity</div>
+    <h2>Learn It. Build It. Get Paid From It.</h2>
+    <p>You're not just learning how to build a business.</p>
+
+    <div class="resell-banner">
+      <div class="big">50%</div>
+      <div class="label">Commission Per Sale</div>
+      <p>Resell ACES School of Business and earn 50% on every sale. Build your business while you learn the business.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<div class="pricing" id="enroll">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <h2>Get Started Today</h2>
+
+    <div class="price-card">
+      <div class="price-label">Full Access</div>
+      <div class="price" style="font-size: 36px;">ACES School of Business</div>
+      <div class="price-note">Apply below to get started</div>
+
+      <ul class="price-includes">
+        <li><span class="check">✓</span> Complete step-by-step business system</li>
+        <li><span class="check">✓</span> Done-for-you content templates</li>
+        <li><span class="check">✓</span> All platform trainings (Meta, CapCut, Canva, AI)</li>
+        <li><span class="check">✓</span> DM & phone frameworks</li>
+        <li><span class="check">✓</span> Community access & ongoing updates</li>
+        <li><span class="check">✓</span> 50% resell commission opportunity</li>
+      </ul>
+
+      <a href="#" class="cta-btn" style="width: 100%; text-align: center;">Apply Now →</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">Questions</div>
+    <h2>Frequently Asked</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>Is this for beginners?</h4>
+        <p>Yes — everything is broken down step-by-step. No prior experience needed.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do I need experience?</h4>
+        <p>No — this is built for people starting from zero.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What makes this different?</h4>
+        <p>This is built on how people actually think and buy — not surface-level tactics or recycled advice.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do I have to sell?</h4>
+        <p>No — but you'll understand how when you're ready. The resell option is there if you want it.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What support do I get?</h4>
+        <p>Access to the community, ongoing updates, and training resources.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Final CTA -->
+<div class="section center" style="padding-bottom: 40px;">
+  <div class="container">
+    <h2>This Is For People Who Are Done Guessing</h2>
+    <p style="margin-top: 16px;">No fluff. No recycled strategies. No "guru talk."<br>Just a system that shows you exactly what to do — and why it works.</p>
+    <div style="margin-top: 32px;">
+      <a href="#enroll" class="cta-btn">Get Started Now →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>ACES School of Business — An AOS Funds Education Program</p>
+  <p style="margin-top: 8px;">This is an educational program. Results are not guaranteed and depend on your effort and execution.</p>
+  <p>All sales are final due to instant access to training and materials.</p>
+  <p style="margin-top: 16px;">© 2026 AOS Funds LLC. All rights reserved.</p>
+</div>
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta">
+  <a href="#enroll" class="cta-btn">Apply Now →</a>
+</div>
+
+</body>
+</html>
